@@ -104,32 +104,23 @@ export default class JsMediaDevices {
     return deviceList.filter(item => item.kind === 'audioinput')
   }
 
-  setOutAudioDevices (element, sinkId) {
+  setOutAudioDevices (element, deviceId) {
     return new Promise((resolve, reject) => {
       if (typeof element.sinkId !== 'undefined') {
-        element.setSinkId(sinkId)
+        element.setSinkId(deviceId)
           .then(() => {
-            console.log(`Success, audio output device attached: ${sinkId} to element with ${element.title} as source.`)
-            resolve(true)
+            resolve(`Success, audio output device attached: ${deviceId} to element with ${element.title} as source.`)
           })
           .catch(error => {
             let errorMessage = error
             if (error.name === 'SecurityError') {
               errorMessage = `You need to use HTTPS for selecting audio output device: ${error}`
             }
-            console.error(errorMessage)
             reject(errorMessage)
           })
       } else {
-        console.warn('Browser does not support output device selection.')
+        reject('Browser does not support output device selection.')
       }
-
-      // setAudioDevice = (audioElem, id, count = 0) =>
-      // new Promise((resolve, reject) => {
-      //   audioElem.setSinkId(id)
-      //     .then(() => { resolve(); })
-      //     .catch((oops) => { if (count > 10000) { reject(oops); } else { setAudioDevice(id, count + 1).then(resolve).catch((err) => reject(err)); } }); // eslint-disable-line
-      // });
     })
   }
 }
