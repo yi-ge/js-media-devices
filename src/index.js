@@ -26,7 +26,7 @@ export default class JsMediaDevices {
 
   async getVideoMedia (deviceId) {
     const stream = await navigator.mediaDevices.getUserMedia({
-      video: { deviceId: { exact: deviceId } },
+      video: deviceId ? { deviceId: { exact: deviceId } } : true,
       audio: false
     })
 
@@ -36,7 +36,7 @@ export default class JsMediaDevices {
   async getAudioMedia (deviceId) {
     const stream = await navigator.mediaDevices.getUserMedia({
       video: false,
-      audio: { deviceId: { exact: deviceId } }
+      audio: deviceId ? { deviceId: { exact: deviceId } } : true
     })
 
     return stream
