@@ -17,7 +17,7 @@ npm i js-media-devices
 ```
 
 ```javascript
-const JsMediaDevices = require('JsMediaDevices')
+const JsMediaDevices = require('js-media-devices')
 
 device = new JsMediaDevices()
 
