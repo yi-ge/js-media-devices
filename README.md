@@ -17,11 +17,13 @@ npm i js-media-devices
 ```
 
 ```javascript
-const JsMediaDevices = require('js-media-devices')
+import JsMediaDevices from 'js-media-devices'
 
-device = new JsMediaDevices()
+const device = new JsMediaDevices()
 
-await device.getDeviceList() // find out: src/index.js
+(async () => {
+  await device.getDeviceList() // find out: src/index.js
 
-await device.setOutAudioDevices(element, deviceId)
+  await device.setOutAudioDevices(element, deviceId)
+})()
 ```
