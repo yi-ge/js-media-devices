@@ -24,7 +24,16 @@ export default class JsMediaDevices {
     })
   }
 
-  async getVideoMedia (deviceId) {
+  async getVideoMedia (deviceId, minWidth, minHeight) {
+    if (minWidth && minHeight) {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: deviceId ? { width: { min: minWidth }, height: { min: minHeight }, deviceId: { exact: deviceId } } : true,
+        audio: false
+      })
+  
+      return stream
+    }
+
     const stream = await navigator.mediaDevices.getUserMedia({
       video: deviceId ? { deviceId: { exact: deviceId } } : true,
       audio: false
