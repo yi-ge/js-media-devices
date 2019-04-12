@@ -25,20 +25,22 @@ export default class JsMediaDevices {
   }
 
   async getVideoMedia (deviceId, options) {
-    const { minWidth, minHeight, width, height } = options
+    const { minWidth, minHeight, width, height } = Object.assign({
+      minWidth: null, minHeight: null, width: null, height: null
+    }, options)
     if (width && height) {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: deviceId ? { width, height, deviceId: { exact: deviceId } } : true,
         audio: false
       })
-  
+
       return stream
     } else if (minWidth && minHeight) {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: deviceId ? { width: { min: minWidth }, height: { min: minHeight }, deviceId: { exact: deviceId } } : true,
         audio: false
       })
-  
+
       return stream
     }
 
@@ -136,7 +138,7 @@ export default class JsMediaDevices {
             reject(errorMessage)
           })
       } else {
-        reject('Browser does not support output device selection.')
+        reject(new Error('Browser does not support output device selection.'))
       }
     })
   }
