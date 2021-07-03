@@ -27,3 +27,9 @@ const device = new JsMediaDevices()
   await device.setOutAudioDevices(element, deviceId)
 })()
 ```
+
+## Build
+
+```bash
+yarn global add uglify-js
+```

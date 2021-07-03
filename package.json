@@ -1,6 +1,6 @@
 {
   "name": "js-media-devices",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "JavaScript MediaDevices Manage Api. Video, Audio Device Manage.",
   "main": "bin/js-media-devices.min.js",
   "scripts": {
@@ -24,18 +24,18 @@
   },
   "homepage": "https://github.com/yi-ge/js-media-devices#readme",
   "devDependencies": {
-    "@babel/core": "^7.3.4",
-    "@babel/plugin-external-helpers": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
-    "jest": "^24.5.0",
-    "rollup": "^1.6.0",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-babel-minify": "^8.0.0",
-    "rollup-plugin-commonjs": "^9.2.1",
-    "rollup-plugin-node-resolve": "^4.0.1"
+    "@babel/core": "^7.14.6",
+    "@babel/plugin-external-helpers": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "jest": "^27.0.6",
+    "rollup": "^2.52.7",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-babel-minify": "^10.0.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.3.4"
+    "@babel/runtime": "^7.14.6"
   }
 }
