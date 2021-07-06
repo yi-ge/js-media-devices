@@ -1,29 +1,38 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-      "targets": {
-        "chrome": "57",
-        "edge": "12",
-        "opera": "34",
-        "firefox": "52",
-        "safari": "12",
-        "ios": "12",
-        "android": "57",
-        "electron": "5"
-      },
-      "modules": false
-    }]
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "chrome": "57",
+          "edge": "12",
+          "opera": "34",
+          "firefox": "52",
+          "safari": "12",
+          "ios": "12",
+          "android": "57",
+          "electron": "5"
+        },
+        "modules": false
+      }
+    ],
+    "@babel/preset-typescript"
   ],
   "env": {
     "test": {
       "presets": [
-        ["@babel/preset-env", {
-          "targets": {
-            "node": "current"
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "node": "current"
+            }
           }
-        }]
+        ]
       ]
     }
   },
-  "plugins": ["@babel/plugin-transform-runtime"]
+  "plugins": [
+    "@babel/plugin-transform-runtime"
+  ]
 }

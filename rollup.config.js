@@ -4,7 +4,7 @@ import babel from 'rollup-plugin-babel'
 import minify from 'rollup-plugin-babel-minify'
 
 export default {
-  input: 'src/index.js',
+  input: 'src/index.ts',
   output: {
     name: 'JsMediaDevices',
     file: 'bin/js-media-devices.js',
@@ -15,7 +15,8 @@ export default {
   plugins: [
     babel({
       exclude: 'node_modules/**',
-      runtimeHelpers: true
+      runtimeHelpers: true,
+      extensions: ['.js', '.ts']
     }),
     resolve({
       jsnext: true,
@@ -23,8 +24,8 @@ export default {
       browser: true
     }),
     commonjs(),
-    minify({ 
-      mangle: { topLevel: true } 
+    minify({
+      mangle: { topLevel: true }
     })
   ]
 }

@@ -1,9 +1,11 @@
 export default class JsMediaDevices {
+  public deviceList: MediaDeviceInfo[];
+
   constructor () {
-    this.deviceList = null
+    this.deviceList = []
   }
 
-  checkMediaDevicesSupport () {
+  checkMediaDevicesSupport(): boolean {
     if (!navigator) {
       throw new Error('navigator not supported.')
     }
@@ -18,25 +20,25 @@ export default class JsMediaDevices {
     return true
   }
 
-  stopMediaTracks (stream) {
+  stopMediaTracks(stream: MediaStream): void {
     stream.getTracks().forEach(track => {
       track.stop()
     })
   }
 
-  async getVideoMedia (deviceId, options) {
+  async getVideoMedia(deviceId: string, options: any): Promise<MediaStream> {
     const { minWidth, minHeight, width, height } = Object.assign({
       minWidth: null, minHeight: null, width: null, height: null
     }, options)
     if (width && height) {
-      const stream = await navigator.mediaDevices.getUserMedia({
+      const stream: MediaStream = await navigator.mediaDevices.getUserMedia({
         video: deviceId ? { width, height, deviceId: { exact: deviceId } } : true,
         audio: false
       })
 
       return stream
     } else if (minWidth && minHeight) {
-      const stream = await navigator.mediaDevices.getUserMedia({
+      const stream: MediaStream = await navigator.mediaDevices.getUserMedia({
         video: deviceId ? { width: { min: minWidth }, height: { min: minHeight }, deviceId: { exact: deviceId } } : true,
         audio: false
       })
@@ -52,8 +54,8 @@ export default class JsMediaDevices {
     return stream
   }
 
-  async getAudioMedia (deviceId) {
-    const stream = await navigator.mediaDevices.getUserMedia({
+  async getAudioMedia(deviceId: string): Promise<MediaStream> {
+    const stream: MediaStream = await navigator.mediaDevices.getUserMedia({
       video: false,
       audio: deviceId ? { deviceId: { exact: deviceId } } : true
     })
@@ -61,8 +63,8 @@ export default class JsMediaDevices {
     return stream
   }
 
-  async getVideoAndAudioMedia (videoDeviceId, audioDeviceId) {
-    const stream = await navigator.mediaDevices.getUserMedia({
+  async getVideoAndAudioMedia(videoDeviceId: string, audioDeviceId: string): Promise<MediaStream> {
+    const stream: MediaStream = await navigator.mediaDevices.getUserMedia({
       video: { deviceId: { exact: videoDeviceId } },
       audio: { deviceId: { exact: audioDeviceId } }
     })
@@ -70,7 +72,7 @@ export default class JsMediaDevices {
     return stream
   }
 
-  async getDeviceList () {
+  async getDeviceList(): Promise<MediaDeviceInfo[]> {
     await navigator.mediaDevices.getUserMedia({
       video: true,
       audio: true
@@ -81,7 +83,7 @@ export default class JsMediaDevices {
     return this.deviceList
   }
 
-  async getOnlyAudioDeviceList () {
+  async getOnlyAudioDeviceList(): Promise<MediaDeviceInfo[]> {
     await navigator.mediaDevices.getUserMedia({
       video: false,
       audio: true
@@ -90,7 +92,7 @@ export default class JsMediaDevices {
     return navigator.mediaDevices.enumerateDevices()
   }
 
-  async getOnlyVideoDeviceList () {
+  async getOnlyVideoDeviceList(): Promise<MediaDeviceInfo[]> {
     await navigator.mediaDevices.getUserMedia({
       video: true,
       audio: false
@@ -99,37 +101,40 @@ export default class JsMediaDevices {
     return navigator.mediaDevices.enumerateDevices()
   }
 
-  async getAudioDeviceList () {
+  async getAudioDeviceList(): Promise<MediaDeviceInfo[]> {
     const deviceList = this.deviceList || await this.getDeviceList()
 
     return deviceList.filter(item => item.kind === 'audioinput' || item.kind === 'audiooutput')
   }
 
-  async getVideoDeviceList () {
+  async getVideoDeviceList(): Promise<MediaDeviceInfo[]> {
     const deviceList = this.deviceList || await this.getDeviceList()
 
     return deviceList.filter(item => item.kind === 'videoinput')
   }
 
-  async getOutAudioDeviceList () {
+  async getOutAudioDeviceList(): Promise<MediaDeviceInfo[]> {
     const deviceList = this.deviceList || await this.getDeviceList()
 
     return deviceList.filter(item => item.kind === 'audiooutput')
   }
 
-  async getInAudioDeviceList () {
+  async getInAudioDeviceList(): Promise<MediaDeviceInfo[]> {
     const deviceList = this.deviceList || await this.getDeviceList()
 
     return deviceList.filter(item => item.kind === 'audioinput')
   }
 
-  setOutAudioDevices (element, deviceId) {
+  setOutAudioDevices(element: HTMLAudioElement, deviceId: string): Promise<string> {
     return new Promise((resolve, reject) => {
+      // @ts-ignore
       if (typeof element.sinkId !== 'undefined') {
+        // @ts-ignore
         element.setSinkId(deviceId)
           .then(() => {
             resolve(`Success, audio output device attached: ${deviceId} to element with ${element.title} as source.`)
           })
+          // @ts-ignore
           .catch(error => {
             let errorMessage = error
             if (error.name === 'SecurityError') {
