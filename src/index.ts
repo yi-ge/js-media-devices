@@ -26,7 +26,7 @@ export default class JsMediaDevices {
     })
   }
 
-  async getVideoMedia(deviceId: string, options: any): Promise<MediaStream> {
+  async getVideoMedia(deviceId: string, options?: any): Promise<MediaStream> {
     const { minWidth, minHeight, width, height } = Object.assign({
       minWidth: null, minHeight: null, width: null, height: null
     }, options)
@@ -102,25 +102,25 @@ export default class JsMediaDevices {
   }
 
   async getAudioDeviceList(): Promise<MediaDeviceInfo[]> {
-    const deviceList = this.deviceList || await this.getDeviceList()
+    const deviceList = this.deviceList.length ? this.deviceList : await this.getDeviceList()
 
     return deviceList.filter(item => item.kind === 'audioinput' || item.kind === 'audiooutput')
   }
 
   async getVideoDeviceList(): Promise<MediaDeviceInfo[]> {
-    const deviceList = this.deviceList || await this.getDeviceList()
+    const deviceList = this.deviceList.length ? this.deviceList : await this.getDeviceList()
 
     return deviceList.filter(item => item.kind === 'videoinput')
   }
 
   async getOutAudioDeviceList(): Promise<MediaDeviceInfo[]> {
-    const deviceList = this.deviceList || await this.getDeviceList()
+    const deviceList = this.deviceList.length ? this.deviceList : await this.getDeviceList()
 
     return deviceList.filter(item => item.kind === 'audiooutput')
   }
 
   async getInAudioDeviceList(): Promise<MediaDeviceInfo[]> {
-    const deviceList = this.deviceList || await this.getDeviceList()
+    const deviceList = this.deviceList.length ? this.deviceList : await this.getDeviceList()
 
     return deviceList.filter(item => item.kind === 'audioinput')
   }
