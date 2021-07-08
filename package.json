@@ -1,6 +1,6 @@
 {
   "name": "js-media-devices",
-  "version": "3.0.1",
+  "version": "3.0.3",
   "description": "JavaScript MediaDevices Manage Api. Video, Audio Device Manage.",
   "main": "bin/js-media-devices.min.js",
   "types": "src/index.ts",
