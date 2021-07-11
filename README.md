@@ -6,17 +6,21 @@
 [![license](https://img.shields.io/github/license/yi-ge/js-media-devices.svg?style=flat-square)](https://github.com/yi-ge/js-media-devices/blob/master/LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/yi-ge/js-media-devices.svg?style=flat-square)](https://github.com/yi-ge/js-media-devices)
 
-[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
-
 Manage Media Devices use javascript.
 
 The [MediaDevices](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices) interface provides access to connected media input devices like cameras and microphones.
 
 ## Usage
 
+### Install
+
 ```
 npm i js-media-devices
 ```
+
+### API
+
+### Example
 
 ```javascript
 import JsMediaDevices from "js-media-devices";
