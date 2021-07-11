@@ -19,7 +19,170 @@ npm i js-media-devices
 ```
 
 ### API
+#### checkMediaDevicesSupport()
 
+检查浏览器是否支持MediaDevices
+
+***Return type***
+
+是或否
+
+```
+boolean
+```
+#### getAudioDeviceList()
+
+获取音频设备列表（输入+输出）
+
+***Return type***
+
+音频设备信息列表
+
+```
+Promise<MediaDeviceInfo[]>
+```
+#### getAudioMediaStream(deviceId)
+
+根据设备ID获取对应的音频输出流
+
+***Parameters***
+
+- **`deviceId`** (`string`) – 设备ID
+
+***Return type***
+
+音频流
+
+```
+Promise<MediaStream>
+```
+#### getAudioOutDeviceList()
+
+获取音频输出设备列表
+
+***Return type***
+
+音频设备信息列表
+
+```
+Promise<MediaDeviceInfo[]>
+```
+#### getDeviceList()
+
+授权并获取设备列表（所有）
+
+***Return type***
+
+媒体设备信息列表
+
+```
+Promise<MediaDeviceInfo[]>
+```
+#### getInAudioInDeviceList()
+
+获取音频输入设备列表
+
+***Return type***
+
+音频设备信息列表
+
+```
+Promise<MediaDeviceInfo[]>
+```
+#### getOnlyAudioDeviceList()
+
+只授权音频设备并获取音频设备列表
+
+***Return type***
+
+音频设备信息列表
+
+```
+Promise<MediaDeviceInfo[]>
+```
+#### getOnlyVideoDeviceList()
+
+只授权视频并获取视频设备列表
+
+***Return type***
+
+视频设备信息列表
+
+```
+Promise<MediaDeviceInfo[]>
+```
+#### getVideoAndAudioMediaStream(videoDeviceId, audioDeviceId)
+
+根据视频输入设备ID和音频输入设备ID获取相应媒体流
+
+***Parameters***
+
+- **`videoDeviceId`** (`string`) – 视频输入设备ID
+- **`audioDeviceId`** (`string`) – 音频输入设备ID
+
+***Return type***
+
+媒体流
+
+```
+Promise<MediaStream>
+```
+#### getVideoDeviceList()
+
+获取视频输入设备列表
+
+***Return type***
+
+视频设备信息列表
+
+```
+Promise<MediaDeviceInfo[]>
+```
+#### getVideoMediaStream(deviceId [, options])
+
+根据设备ID获取对应的视频输出流
+
+***Parameters***
+
+- **`deviceId`** (`string`) – 设备ID
+- **`options`** (`any`) – *Optional.* 选项 { minWidth, minHeight, width, height }
+
+***Return type***
+
+视频流
+
+```
+Promise<MediaStream>
+```
+#### setAudioOutDevice(element, deviceId)
+
+根据音频输出设备ID设置当前音频输出设备
+
+***Parameters***
+
+- **`element`** (`HTMLAudioElement`) – HTMLAudioElement
+- **`deviceId`** (`string`) – 音频输出设备ID
+
+***Return type***
+
+提示信息
+
+```
+Promise<string>
+```
+#### stopMediaTracks(stream)
+
+停止视频流/音频流
+
+***Parameters***
+
+- **`stream`** (`MediaStream`) – 视频流或音频流
+
+***Return type***
+
+```
+void
+```
 ### Example
 
 ```javascript
