@@ -99,7 +99,7 @@ export default class JsMediaDevices {
    * 获取音频输入设备列表
    * @returns 音频设备信息列表
    */
-  async getInAudioInDeviceList(): Promise<MediaDeviceInfo[]> {
+  async getAudioInDeviceList(): Promise<MediaDeviceInfo[]> {
     const deviceList = this.deviceList.length ? this.deviceList : await this.getDeviceList()
 
     return deviceList.filter(item => item.kind === 'audioinput')
