@@ -19,170 +19,184 @@ npm i js-media-devices
 ```
 
 ### API
+
 #### checkMediaDevicesSupport()
 
-检查浏览器是否支持MediaDevices
+检查浏览器是否支持 MediaDevices
 
-***Return type***
+**_Return type_**
 
 是或否
 
 ```
 boolean
 ```
+
 #### getAudioDeviceList()
 
 获取音频设备列表（输入+输出）
 
-***Return type***
+**_Return type_**
 
 音频设备信息列表
 
 ```
 Promise<MediaDeviceInfo[]>
 ```
+
 #### getAudioMediaStream(deviceId)
 
-根据设备ID获取对应的音频输出流
+根据设备 ID 获取对应的音频输出流
 
-***Parameters***
+**_Parameters_**
 
-- **`deviceId`** (`string`) – 设备ID
+- **`deviceId`** (`string`) – 设备 ID
 
-***Return type***
+**_Return type_**
 
 音频流
 
 ```
 Promise<MediaStream>
 ```
+
 #### getAudioOutDeviceList()
 
 获取音频输出设备列表
 
-***Return type***
+**_Return type_**
 
 音频设备信息列表
 
 ```
 Promise<MediaDeviceInfo[]>
 ```
+
 #### getDeviceList()
 
 授权并获取设备列表（所有）
 
-***Return type***
+**_Return type_**
 
 媒体设备信息列表
 
 ```
 Promise<MediaDeviceInfo[]>
 ```
-#### getInAudioInDeviceList()
+
+#### getAudioInDeviceList()
 
 获取音频输入设备列表
 
-***Return type***
+**_Return type_**
 
 音频设备信息列表
 
 ```
 Promise<MediaDeviceInfo[]>
 ```
+
 #### getOnlyAudioDeviceList()
 
 只授权音频设备并获取音频设备列表
 
-***Return type***
+**_Return type_**
 
 音频设备信息列表
 
 ```
 Promise<MediaDeviceInfo[]>
 ```
+
 #### getOnlyVideoDeviceList()
 
 只授权视频并获取视频设备列表
 
-***Return type***
+**_Return type_**
 
 视频设备信息列表
 
 ```
 Promise<MediaDeviceInfo[]>
 ```
+
 #### getVideoAndAudioMediaStream(videoDeviceId, audioDeviceId)
 
-根据视频输入设备ID和音频输入设备ID获取相应媒体流
+根据视频输入设备 ID 和音频输入设备 ID 获取相应媒体流
 
-***Parameters***
+**_Parameters_**
 
-- **`videoDeviceId`** (`string`) – 视频输入设备ID
-- **`audioDeviceId`** (`string`) – 音频输入设备ID
+- **`videoDeviceId`** (`string`) – 视频输入设备 ID
+- **`audioDeviceId`** (`string`) – 音频输入设备 ID
 
-***Return type***
+**_Return type_**
 
 媒体流
 
 ```
 Promise<MediaStream>
 ```
+
 #### getVideoDeviceList()
 
 获取视频输入设备列表
 
-***Return type***
+**_Return type_**
 
 视频设备信息列表
 
 ```
 Promise<MediaDeviceInfo[]>
 ```
+
 #### getVideoMediaStream(deviceId [, options])
 
-根据设备ID获取对应的视频输出流
+根据设备 ID 获取对应的视频输出流
 
-***Parameters***
+**_Parameters_**
 
-- **`deviceId`** (`string`) – 设备ID
-- **`options`** (`any`) – *Optional.* 选项 { minWidth, minHeight, width, height }
+- **`deviceId`** (`string`) – 设备 ID
+- **`options`** (`any`) – _Optional._ 选项 { minWidth, minHeight, width, height }
 
-***Return type***
+**_Return type_**
 
 视频流
 
 ```
 Promise<MediaStream>
 ```
+
 #### setAudioOutDevice(element, deviceId)
 
-根据音频输出设备ID设置当前音频输出设备
+根据音频输出设备 ID 设置当前音频输出设备
 
-***Parameters***
+**_Parameters_**
 
 - **`element`** (`HTMLAudioElement`) – HTMLAudioElement
-- **`deviceId`** (`string`) – 音频输出设备ID
+- **`deviceId`** (`string`) – 音频输出设备 ID
 
-***Return type***
+**_Return type_**
 
 提示信息
 
 ```
 Promise<string>
 ```
+
 #### stopMediaTracks(stream)
 
 停止视频流/音频流
 
-***Parameters***
+**_Parameters_**
 
 - **`stream`** (`MediaStream`) – 视频流或音频流
 
-***Return type***
+**_Return type_**
 
 ```
 void
 ```
+
 ### Example
 
 ```javascript
