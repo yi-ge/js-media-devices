@@ -17,8 +17,9 @@
   <script>
     window.onload = async () => {
       const jsMediaDevices = new JsMediaDevices()
+      console.log(jsMediaDevices)
 
-      var stream = await jsMediaDevices.getAudioMedia()
+      var stream = await jsMediaDevices.getAudioMediaStream()
     }
   </script>
 </body>
